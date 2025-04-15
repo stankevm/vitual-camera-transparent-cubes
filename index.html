@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Cubes with Virtual Camera</title>
+    <style>
+        body { 
+            margin: 0; 
+            overflow: hidden; 
+            background-color: white;
+        }
+        canvas { 
+            display: block; 
+            background-color: white;
+        }
+        #instructions {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div id="instructions">
+        <h3>Camera Controls</h3>
+        <p><strong>Movement:</strong> W/S (forward/back), A/D (left/right), Q/E (up/down)</p>
+        <p><strong>Rotation:</strong> Arrow Keys (pitch/yaw), Z/X (roll)</p>
+    </div>
+
+    <script src="camera.js"></script>
+    <script src="objects.js"></script>
+    <script src="renderer.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
