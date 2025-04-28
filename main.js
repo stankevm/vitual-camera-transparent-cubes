@@ -3,16 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderer = new Renderer(canvas);
     const camera = new Camera();
     
-    // Set initial camera position
     camera.position.z = 5;
     camera.aspectRatio = canvas.width / canvas.height;
 
-    // Create four colored cubes
+    //4 sześciany
+
     const cubes = [
         new Cube(-1.5, 0, 0, 1, 'red'),
         new Cube(1.5, 0, 0, 1, 'blue'),
         new Cube(0, -1.5, 0, 1, 'green'),
-        new Cube(0, 1.5, 0, 1, 'black') // Changed yellow to black for better visibility
+        new Cube(0, 1.5, 0, 1, 'black') 
     ];
 
     function handleResize() {
@@ -25,6 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', handleResize);
     handleResize();
 
+    canvas.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const zoomSpeed = 1;
+        camera.fov += e.deltaY * 0.01 * zoomSpeed;
+        camera.fov = Math.max(10, Math.min(120, camera.fov)); 
+    });
+
     function animate() {
         renderer.renderScene(camera, cubes);
         requestAnimationFrame(animate);
@@ -32,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Keyboard controls
     document.addEventListener('keydown', (e) => {
-        const step = 0.2;
+        const step = 0.3;
         const rotationStep = 2;
 
         switch (e.key) {
